@@ -21,11 +21,21 @@ export const postApi = createApi({
           url:`posts/${id}`,
           method:'GET'
         }}
-       })
+       }),
+       getPostByLimit: builder.query({
+        query:(num)=>{
+        console.log("Limit Number : ", num)
+          return{
+          url:`posts/?_limit=${num}`,
+          method:'GET'
+        }}
+       }),
+       
     }),
+    
     
   })
   
   // Export hooks for usage in functional components, which are
   // auto-generated based on the defined endpoints
-  export const { useGetAllPostsQuery , useGetPostByIdQuery } = postApi
+  export const { useGetAllPostsQuery , useGetPostByIdQuery , useGetPostByLimitQuery} = postApi
